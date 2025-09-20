@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MetroFlow Design System - Premium Metro-Inspired Theme */
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 220 25% 5%;
+    --foreground: 220 5% 95%;
+    
+    /* Metro Line Colors */
+    --metro-green: 142 75% 50%;
+    --metro-green-glow: 142 75% 65%;
+    --metro-yellow: 45 93% 58%;
+    --metro-yellow-glow: 45 93% 70%;
+    --metro-red: 0 84% 60%;
+    --metro-red-glow: 0 84% 75%;
+    --metro-blue: 217 91% 60%;
+    --metro-blue-glow: 217 91% 75%;
+    
+    /* AI Glow Colors */
+    --ai-glow: 260 100% 80%;
+    --ai-glow-secondary: 280 100% 70%;
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 100% 70%;
+    
+    /* Glassmorphism Colors */
+    --glass-bg: 220 25% 15%;
+    --glass-border: 220 25% 25%;
+    --glass-overlay: 220 25% 10%;
+    
+    /* Neumorphism Colors */
+    --neuro-light: 220 25% 8%;
+    --neuro-dark: 220 25% 2%;
+    --neuro-highlight: 220 25% 12%;
+    
+    /* Semantic Colors */
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 5% 95%;
+    --primary-glow: 217 91% 75%;
+    
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 220 5% 85%;
+    
+    --success: 142 75% 50%;
+    --success-foreground: 220 5% 95%;
+    
+    --warning: 45 93% 58%;
+    --warning-foreground: 220 25% 5%;
+    
+    --danger: 0 84% 60%;
+    --danger-foreground: 220 5% 95%;
+    
+    --muted: 220 25% 10%;
+    --muted-foreground: 220 5% 65%;
+    
+    --accent: 260 100% 80%;
+    --accent-foreground: 220 25% 5%;
+    
+    --border: 220 25% 20%;
+    --input: 220 25% 12%;
+    --ring: 217 91% 60%;
+    
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-metro: linear-gradient(135deg, hsl(var(--metro-green)) 0%, hsl(var(--metro-blue)) 50%, hsl(var(--metro-red)) 100%);
+    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-glow)) 0%, hsl(var(--ai-glow-secondary)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-bg) / 0.1) 0%, hsl(var(--glass-bg) / 0.05) 100%);
+    --gradient-neuro: linear-gradient(145deg, hsl(var(--neuro-light)), hsl(var(--neuro-dark)));
+    
+    /* Shadows */
+    --shadow-neuro-inset: inset 3px 3px 6px hsl(var(--neuro-dark)), inset -3px -3px 6px hsl(var(--neuro-light));
+    --shadow-neuro-raised: 3px 3px 6px hsl(var(--neuro-dark)), -3px -3px 6px hsl(var(--neuro-light));
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-glow-strong: 0 0 30px hsl(var(--primary) / 0.5);
+    --shadow-metro-green: 0 0 15px hsl(var(--metro-green) / 0.4);
+    --shadow-metro-yellow: 0 0 15px hsl(var(--metro-yellow) / 0.4);
+    --shadow-metro-red: 0 0 15px hsl(var(--metro-red) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-fast: all 0.15s ease-out;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass-card {
+    @apply backdrop-blur-md bg-glass-bg/10 border border-glass-border/20 rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-nav {
+    @apply backdrop-blur-xl bg-glass-bg/5 border-b border-glass-border/10;
+  }
+  
+  /* Neumorphism Buttons */
+  .neuro-btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: var(--gradient-neuro);
+    box-shadow: var(--shadow-neuro-raised);
+    border: 1px solid hsl(var(--neuro-highlight));
+  }
+  
+  .neuro-btn:hover {
+    box-shadow: var(--shadow-neuro-inset), var(--shadow-glow);
+    transform: translateY(-1px);
+  }
+  
+  .neuro-btn:active {
+    box-shadow: var(--shadow-neuro-inset);
+    transform: translateY(0);
+  }
+  
+  /* Metro Rush Indicators */
+  .rush-green {
+    @apply bg-success/20 border-success/30 text-success-foreground;
+    box-shadow: var(--shadow-metro-green);
+  }
+  
+  .rush-yellow {
+    @apply bg-warning/20 border-warning/30 text-warning-foreground;
+    box-shadow: var(--shadow-metro-yellow);
+  }
+  
+  .rush-red {
+    @apply bg-danger/20 border-danger/30 text-danger-foreground;
+    box-shadow: var(--shadow-metro-red);
+  }
+  
+  /* AI Glow Effects */
+  .ai-glow {
+    background: var(--gradient-ai);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  .metro-lines-bg {
+    background: var(--gradient-metro);
+    opacity: 0.05;
+    animation: float-lines 20s ease-in-out infinite;
+  }
+  
+  /* Scroll Animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .blur-in {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, filter 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .blur-in.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px hsl(var(--ai-glow) / 0.3); }
+    100% { box-shadow: 0 0 40px hsl(var(--ai-glow) / 0.6); }
+  }
+  
+  @keyframes float-lines {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(20px) rotate(1deg); }
+  }
+  
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slide-out-right {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+  
+  @keyframes page-enter {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s ease-out;
+  }
+  
+  .animate-slide-out-right {
+    animation: slide-out-right 0.4s ease-out;
+  }
+  
+  .animate-page-enter {
+    animation: page-enter 0.8s ease-out;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    @apply fixed inset-y-0 right-0 z-50 w-full max-w-sm transform;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid hsl(var(--glass-border) / 0.2);
+  }
+}
